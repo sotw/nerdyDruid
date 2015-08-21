@@ -1,0 +1,6 @@
+PKGFOLDER=~/.nerdyDruid
+exeName=$0
+exeName=${exeName##*/}
+exeName=${exeName%.*}
+exeName=$exeName.py
+python $PKGFOLDER/$exeName $@
