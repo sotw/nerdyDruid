@@ -93,7 +93,7 @@ def loadDb():
 
 def main():
     signupGPIO()
-	doStuff(tTarget)
+    doStuff(tTarget)
 
 
 
