@@ -11,50 +11,49 @@ global ARGUDB
 
 ARGUDB = []
 
+#[]== repeat_to_length
+def r2len(string_to_expand, length):
+	return (string_to_expand * ((length/len(string_to_expand))+1))[:length]
+
+chan_list = [31,33,36,37]
+
+def selftesting(chans):
+	DB.info('doing seltesting...')
+	for chan in chans:
+		DB.info('test ping %d' %(chan))
+		GPIO.output(chan, GPIO.LOW)
+		time.sleep(3)
+		GPIO.output(chan, GPIO.HIGH)
+
+#doing initialize in old fashion
+def regOneGPIOoutLowAct(num):
+	#DB.info('%s' %(r2len('-',40)))
+	DB.info('reg GPIO pin %d' %(num))
+	GPIO.setmode(GPIO.BOARD)
+	GPIO.setup(num,GPIO.OUT) #you know, you can directly setup a matrix
+	GPIO.output(num,GPIO.HIGH)
+	DB.debug('self testing...')
+	DB.debug('output low')
+	GPIO.output(num,GPIO.LOW)
+	time.sleep(3)
+	DB.debug('output high')
+	GPIO.output(num,GPIO.HIGH)
+
+#[]== should use matrix to define and initialize all items
 def signupGPIO():
-    GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(31,GPIO.OUT)
-    GPIO.setup(33,GPIO.OUT)
-    GPIO.setup(35,GPIO.OUT)
-    GPIO.setup(37,GPIO.OUT)
-    GPIO.output(31,GPIO.HIGH)
-    GPIO.output(33,GPIO.HIGH)
-    GPIO.output(35,GPIO.HIGH)
-    GPIO.output(37,GPIO.HIGH)
-    print "Now doing some relay test..."
-    print "relay 1 ON"
-    GPIO.output(31,GPIO.LOW)
-    time.sleep(1)
-    GPIO.output(31,GPIO.HIGH)
-    print "relay 2 ON"
-    GPIO.output(33,GPIO.LOW)
-    time.sleep(1)
-    GPIO.output(33,GPIO.HIGH)
-    print "relay 3 ON"
-    GPIO.output(35,GPIO.LOW)
-    time.sleep(1)
-    GPIO.output(35,GPIO.HIGH)
-    print "relay 4 ON"
-    GPIO.output(37,GPIO.LOW)
-    time.sleep(1)
-    GPIO.output(37,GPIO.HIGH)
-    print "now all ON"
-    GPIO.output(31,GPIO.LOW)
-    GPIO.output(33,GPIO.LOW)
-    GPIO.output(35,GPIO.LOW)
-    GPIO.output(37,GPIO.LOW)
-    print "now all OFF"
-    GPIO.output(31,GPIO.HIGH)
-    GPIO.output(33,GPIO.HIGH)
-    GPIO.output(35,GPIO.HIGH)
-    GPIO.output(37,GPIO.HIGH)
+	#regOneGPIOoutLowAct(31)
+	os.system('clear')
+	GPIO.setmode(GPIO.BOARD)
+	GPIO.setup(chan_list,GPIO.OUT)
+	selftesting(chan_list)
+	os.system('clear')
 
 def doStuff(tTarget):
-    print "Hi"
+	DB.info('Let\'s start a wonderful nerdyDruid day and try to survive in post-apocalypse')
 
 def setup_logging(level):
 	global DB
-	DB = logging.getLogger('get_jpnews') #replace
+	DB = logging.getLogger('nerdyDruid') #replace
 	DB.setLevel(level)
 	handler = logging.StreamHandler(sys.stdout)
 	handler.setFormatter(logging.Formatter('%(module)s %(levelname)s %(funcName)s| %(message)s'))
@@ -94,8 +93,6 @@ def loadDb():
 def main():
     signupGPIO()
     doStuff(tTarget)
-
-
 
 if __name__ == '__main__':
 	verify()
