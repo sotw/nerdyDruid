@@ -1,5 +1,5 @@
 import os, sys
-import os.path import expanduser
+from os.path import expanduser
 import argparse
 import logging
 import RPi.GPIO as GPIO
