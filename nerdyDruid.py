@@ -24,25 +24,26 @@ def signupGPIO():
     print "Now doing some relay test..."
     print "relay 1 ON"
     GPIO.output(31,GPIO.LOW)
-    time.sleep(1)
+    time.sleep(2)
     GPIO.output(31,GPIO.HIGH)
     print "relay 2 ON"
     GPIO.output(33,GPIO.LOW)
-    time.sleep(1)
+    time.sleep(2)
     GPIO.output(33,GPIO.HIGH)
     print "relay 3 ON"
     GPIO.output(35,GPIO.LOW)
-    time.sleep(1)
+    time.sleep(2)
     GPIO.output(35,GPIO.HIGH)
     print "relay 4 ON"
     GPIO.output(37,GPIO.LOW)
-    time.sleep(1)
+    time.sleep(2)
     GPIO.output(37,GPIO.HIGH)
     print "now all ON"
     GPIO.output(31,GPIO.LOW)
     GPIO.output(33,GPIO.LOW)
     GPIO.output(35,GPIO.LOW)
     GPIO.output(37,GPIO.LOW)
+    time.sleep(2)
     print "now all OFF"
     GPIO.output(31,GPIO.HIGH)
     GPIO.output(33,GPIO.HIGH)

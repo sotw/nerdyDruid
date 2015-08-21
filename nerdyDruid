@@ -3,4 +3,4 @@ exeName=$0
 exeName=${exeName##*/}
 exeName=${exeName%.*}
 exeName=$exeName.py
-python $PKGFOLDER/$exeName $@
+sudo python $PKGFOLDER/$exeName $@
