@@ -47,27 +47,18 @@ Combined with crontab like the following:
 
 ```bash
 0 21 * * * /usr/bn/python /home/pi/Projects/fishtank/lightON.py
+#light on at 9 P.M. every day.
 0 9 * * * /usr/bin/python /home/pi/Projects/fishtank/lightOFF.py
+#light off at 9 A.M. every day.
 30 23 * * * /usr/bin/python /home/pi/Projects/fishtank/airPumpON.py
+#pump air into the tank at 11:30 every day.
 0 0 * * * /usr/bin/python /home/pi/Projects/fishtank/airPumpOFF.py
+#stop pumping air into the tank at 12:00 P.M.
 0 6 * * * /usr/bin/python /home/pi/Project/fishtank/feederON.py
+#open the feeder's gate at 6:00 A.M. (defult drop fish food for 5 secs)
 1 6 * * * /usr/bin/python /home/pi/Project/fishtank/feederOFF.py
+#force close the feeder's gate at 6:01 A.M. (this is a safe check)
 ```
-
-Simple explain for the above schedule:
-0 21 * * * /usr/bn/python /home/pi/Projects/fishtank/lightON.py
-light on at 9 P.M. every day.
-0 9 * * * /usr/bin/python /home/pi/Projects/fishtank/lightOFF.py
-light off at 9 A.M. every day.
-30 23 * * * /usr/bin/python /home/pi/Projects/fishtank/airPumpON.py
-pump air into the tank at 11:30 every day.
-0 0 * * * /usr/bin/python /home/pi/Projects/fishtank/airPumpOFF.py
-stop pumping air into the tank at 12:00 P.M.
-0 6 * * * /usr/bin/python /home/pi/Project/fishtank/feederON.py
-open the feeder's gate at 6:00 A.M. (defult drop fish food for 5 secs)
-1 6 * * * /usr/bin/python /home/pi/Project/fishtank/feederOFF.py
-force close the feeder's gate at 6:01 A.M. (this is a safe check)
-
 #### The video of above implementation on real hardware
 
 [GPIO + RELAY + AIRPUMP](https://www.youtube.com/watch?v=_0tbMlIjp9Q)
